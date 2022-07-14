@@ -1,0 +1,29 @@
+
+<mat-toolbar color="accent">
+    <span>Menu</span>
+    <span class="spacer"></span>
+    <button mat-icon-button 
+            (click)="onSidenavClose()">
+        <mat-icon>menu</mat-icon>
+    </button>
+</mat-toolbar>
+<mat-nav-list>
+    <a routerLink="./search" 
+        mat-list-item
+        (click)="onSidenavClose()">
+        <mat-icon mat-list-icon>search</mat-icon>
+        <span>Search Places</span>
+    </a>
+    <a routerLink="./list" 
+        mat-list-item
+        (click)="onSidenavClose()">
+        <mat-icon mat-list-icon>list</mat-icon>
+        <span>List Recents</span>
+    </a>
+    <a routerLink="./list" 
+        mat-list-item
+        (click)="onSidenavClose()">
+        <mat-icon mat-list-icon>info</mat-icon>
+        <span>About Us</span>
+    </a>
+</mat-nav-list>

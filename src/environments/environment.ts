@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  foursquareApiKey: 'fsq3et5FtK77BuzMOuzr7AAyfGXQ7zUvrMfC/WlmfGMSbvI='
 };
 
 /*
