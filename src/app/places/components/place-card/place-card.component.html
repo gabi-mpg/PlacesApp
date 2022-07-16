@@ -1,1 +1,23 @@
-<p>place-card works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title> {{ place.name }}</mat-card-title>
+        <mat-card-subtitle> {{ place.categories }} </mat-card-subtitle>
+    </mat-card-header>
+    <!-- <img mat-card-image [src]="place.categories[0].icon.prefix + place.categories[0].icon.suffix" alt="Image of {{place.name}}"> -->
+    <mat-card-content>
+        <h3>{{ place.timezone }}</h3>
+        <p>
+            <strong>x: </strong> {{ place.distance }}
+        </p>
+        <p>
+            <strong>x: </strong>{{ place.chains }}
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button 
+                color="accent"
+                [routerLink]="['/places', place.name]">
+            Read...
+        </button>
+    </mat-card-actions>
+</mat-card>

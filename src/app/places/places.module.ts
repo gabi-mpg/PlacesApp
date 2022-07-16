@@ -12,6 +12,7 @@ import { PlacesRoutingModule } from './places-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { NavHeaderComponent } from './components/navigation/nav-header/nav-header.component';
 import { SidenavListComponent } from './components/navigation/sidenav-list/sidenav-list.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -29,7 +30,8 @@ import { SidenavListComponent } from './components/navigation/sidenav-list/siden
     CommonModule,
     FlexLayoutModule,
     PlacesRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   exports: [
     HomeComponent

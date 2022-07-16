@@ -1,1 +1,48 @@
-<p>search works!</p>
+<div fxLayout="column">
+    <div>
+        <h1>Places Search</h1>
+        <mat-divider></mat-divider>
+    </div>
+    <div fxLayout="column">
+        <h3>Search</h3>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Type your search...</mat-label>
+            <input type="text"
+                   aria-label="Enter your search"
+                   matInput
+                   [(ngModel)]="term"
+                   [ngModelOptions]="{standalone: true}"
+                   [matAutocomplete]="auto"
+                   (input)="search()">
+            <mat-autocomplete autoActiveFirstOption 
+                              #auto="matAutocomplete"
+                              (optionSelected)="selectedOption( $event )">
+              <mat-option *ngFor="let place of places" 
+                          [value]="place.name">
+                {{ place.name }}
+              </mat-option>
+              <mat-option [value]="" *ngIf="places.length === 0 && term && term.length >= 3">
+                No results for "{{term}}"
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+
+
+    <ng-template #noResults>
+        No results for "{{term}}"
+    </ng-template>
+      
+  
+      <div *ngIf="selectedPlace">
+        <mat-tab-group>
+          <mat-tab label="List">
+            <app-list [places]="places"></app-list>
+          </mat-tab>
+          <mat-tab label="Map">
+          
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+
+</div>

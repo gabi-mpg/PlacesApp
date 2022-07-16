@@ -1,1 +1,13 @@
-<p>list works!</p>
+<div fxLayout="row grap"
+    fxLayout.xs="column"
+    fxLayoutAlign="center"
+    fxLayoutGap="10px">
+    <div fxflex="20" 
+        fxflex.lg="15"
+        fxflex.sm="30"
+        *ngFor="let place of places">
+        
+        <app-place-card [place]="place"></app-place-card>
+
+    </div>
+</div>
