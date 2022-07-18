@@ -5,12 +5,17 @@ import { ListComponent } from './pages/list/list.component';
 import { PlaceComponent } from './pages/place/place.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
     children: [
+      {
+        path: 'home',
+        component: WelcomeComponent,
+      },
       {
         path: 'search',
         component: SearchComponent,

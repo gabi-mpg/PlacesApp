@@ -4,8 +4,8 @@ import { HomeComponent } from './places/pages/home/home.component';
 
 const routes: Routes = [
   {
-    path: 'places',
-    component: HomeComponent,
+    path: 'places/',
+    redirectTo: 'places/home',
   },
   {
     path: 'places',
@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'places',
+    redirectTo: 'places/home',
   },
 ];
 

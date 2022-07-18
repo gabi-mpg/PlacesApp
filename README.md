@@ -2,10 +2,6 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.5.
 
-## Build borrar luegooooo
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
 ## Description
 
 This website has been built as a challengue during a job selection process. It is a simple angular website where places information near a given location can be searched. This information is retrieved from the FOURSQUARE Places API. Also, Google Maps API is used in order to show the location of the places searched.
@@ -60,4 +56,5 @@ Navigate to the next link in order to use the application already deployed:
 ## Authors and acknowledgment
 
 - Author: Gabriela Mercado Pérez
-- Cover Photo: <https://www.wallpaperbetter.com/es/hd-wallpaper-zqkga>
+- Cover Photo About: <https://www.wallpaperbetter.com/es/hd-wallpaper-zqkga>
+- Cover Photo Home: <https://www.pinterest.co.uk/pin/407998047499385545/>

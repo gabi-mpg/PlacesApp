@@ -22,6 +22,7 @@ import { ImagePipe } from './pipes/image.pipe';
 import { ImagePOIPipe } from './pipes/image-poi.pipe';
 import { AboutComponent } from './pages/about/about.component';
 import { HttpClientModule } from '@angular/common/http';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { HttpClientModule } from '@angular/common/http';
     ImagePipe,
     ImagePOIPipe,
     AboutComponent,
+    WelcomeComponent,
   ],
   imports: [
     CommonModule,

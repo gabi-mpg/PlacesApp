@@ -7,6 +7,12 @@
     </button>
 </mat-toolbar>
 <mat-nav-list>
+    <a routerLink="./home" 
+        mat-list-item
+        (click)="onSidenavClose()">
+        <mat-icon mat-list-icon>home</mat-icon>
+        <span>Home</span>
+    </a>
     <a routerLink="./search" 
         mat-list-item
         (click)="onSidenavClose()">
