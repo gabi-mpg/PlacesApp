@@ -1,10 +1,14 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { POI } from '../interfaces/places-poi.interface';
 import { Photo } from '../interfaces/photo.interface';
 
 @Pipe({
   name: 'imagePOI',
 })
+
+/**
+ * This Pipes recives an object Photo and builds an images src valid URL
+ * in order to correctly retrieve the information
+ */
 export class ImagePOIPipe implements PipeTransform {
 
   transform(photo: Photo): string {

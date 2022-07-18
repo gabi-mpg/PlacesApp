@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Place } from '../../interfaces/place-results.insterface';
-import { POI } from '../../interfaces/places-poi.interface';
 import { PlacesService } from '../../services/places.service';
 
 @Component({
@@ -10,10 +9,7 @@ import { PlacesService } from '../../services/places.service';
 })
 export class PlaceCardComponent implements OnInit {
   @Input() place!: Place;
-  @Input() POIData: POI[] = [];
   @Input() near: string = '';
-
-  POI: POI | undefined;
 
   constructor(private _placesService: PlacesService) {}
 
@@ -21,9 +17,5 @@ export class PlaceCardComponent implements OnInit {
     if (!this.near) {
       this.near = this.place.location.country;
     }
-
-    this._placesService
-      .getPOI(this.place.link)
-      .subscribe((e) => (this.POI = e));
   }
 }

@@ -3,7 +3,6 @@ import { PlacesService } from '../../services/places.service';
 import { Place } from '../../interfaces/place-results.insterface';
 import { MatAutocompleteActivatedEvent } from '@angular/material/autocomplete';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { POI } from '../../interfaces/places-poi.interface';
 
 @Component({
   selector: 'app-search',
@@ -16,7 +15,6 @@ export class SearchComponent implements OnInit {
   term: string = '';
   near: string = '';
   places: Place[] = [];
-  placesPOI: POI[] = [];
   nearSend: string = '';
   termSend: string = '';
   isError: boolean = false;
@@ -50,19 +48,28 @@ export class SearchComponent implements OnInit {
     }
   }
 
+  /**
+   * This method checks the data from the inputs
+   * @returns 
+   */
   searchAll() {
     if (!this.near) {
       this.showMessage('You need to enter a location');
       return;
     }
 
-    if (this.near && this.term.length === 0) {
+    if (this.near && this.term.length == 0) {
       this.term = '*';
     }
 
     this.getPlaces();
   }
 
+  /**
+   * This method is called when the search parameters are correct. It establishes the search
+   * flag as true, stores the terms so the value can still be used by the html and it calls
+   * the method in the places service that retrieves the data, cheking the results
+   */
   getPlaces() {
     this.isSearch = true;
     this.nearSend = this.near;
@@ -71,16 +78,11 @@ export class SearchComponent implements OnInit {
       .foursquareGet(this.term.trim(), this.near.trim())
       .subscribe({
         next: (res) => {
-          if (res.results.length === 0) {
+          if (res.results.length == 0) {
             this.isSearch = false;
             this.isError = true;
           } else {
             this.places = res.results;
-            res.results.forEach((place) => {
-              this._placesService.getPOI(place.link).subscribe((poi) => {
-                this.placesPOI.push(poi);
-              });
-            });
             this.isError = false;
           }
         },

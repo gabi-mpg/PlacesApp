@@ -9,6 +9,11 @@ import { Router } from '@angular/router';
   templateUrl: './js-map.component.html',
   styleUrls: ['./js-map.component.css']
 })
+
+/**
+ * Class that processes all the needed logic to correctly display the Google JavaScript Map
+ * with all its markers.
+ */
 export class JsMapComponent implements OnInit {
 
   @Input() places!: Place[];

@@ -36,4 +36,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatAutocompleteModule,
   ],
 })
+
+/**
+ * This module collects and exports all the Material Modules that are used in this project
+ * 
+ */
 export class MaterialModule {}

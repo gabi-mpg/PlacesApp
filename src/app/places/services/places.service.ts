@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Results, Place } from '../interfaces/place-results.insterface';
 import { Observable } from 'rxjs';
-import { POI } from '../interfaces/places-poi.interface';
 import { Photo } from '../interfaces/photo.interface';
 
 @Injectable({
@@ -36,7 +35,7 @@ export class PlacesService {
 
   addToRecord(place: Place){
     if(this._placesRecord !== undefined){
-      if( !this._placesRecord.some(e => e.fsq_id === place.fsq_id)){
+      if( !this._placesRecord.some(e => e.fsq_id == place.fsq_id)){
         this._placesRecord.unshift(place);
         this._placesRecord = this._placesRecord.splice(0,40);
   
@@ -47,12 +46,6 @@ export class PlacesService {
       this._placesRecord = [place];
       localStorage.setItem('placesRecord', JSON.stringify(this._placesRecord));
     }
-  }
-
-  getPlace(query: string, near: string): Observable<Results> {    
-    return this._http.get<Results>(this.baseURL + `?query=${query}&near=${near}&limit=4`, {
-      headers: this.headers
-    });
   }
 
   foursquareGet(query: string, near: string): Observable<Results> {
@@ -68,8 +61,8 @@ export class PlacesService {
     );
   }
 
-  getPOI(endpoint: string): Observable<POI>{
-    return this._http.get<POI>(`${this.baseURLPOI}${endpoint}`, {
+  getPlaceLink(endpoint: string): Observable<Place>{
+    return this._http.get<Place>(`${this.baseURLPOI}${endpoint}`, {
       headers: this.headers
     });
   }

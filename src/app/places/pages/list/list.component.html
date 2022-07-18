@@ -7,7 +7,6 @@
       <app-place-card
         [place]="place"
         [near]="near"
-        [POIData]="POI"
       ></app-place-card>
     </div>
 
@@ -16,7 +15,7 @@
       <hr />
     </ng-template>
 
-    <div *ngIf="places === undefined">
+    <div *ngIf="places == undefined">
       <h3>No recent searches</h3>
       <div class="d-flex justify-content-center mb-5">
         <div class="justify-content">

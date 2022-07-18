@@ -51,7 +51,7 @@
           </mat-option>
           <mat-option
             [value]="term"
-            *ngIf="places.length === 0 && term && term.length >= 3"
+            *ngIf="places.length == 0 && term && term.length >= 3"
           >
             No results for "{{ term }}"
           </mat-option>
@@ -69,7 +69,7 @@
 
   <mat-grid-list
     cols="1"
-    *ngIf="isSearch && placesPOI.length == 0; else divResults"
+    *ngIf="isSearch && places.length == 0; else divResults"
   >
     <mat-grid-tile>
       <mat-spinner></mat-spinner>
@@ -77,12 +77,11 @@
   </mat-grid-list>
 
   <ng-template #divResults>
-    <div *ngIf="placesPOI.length > 0">
+    <div *ngIf="places.length > 0">
       <mat-tab-group>
         <mat-tab label="List">
           <app-list
             [places]="places"
-            [POI]="placesPOI"
             [near]="nearSend"
           ></app-list>
         </mat-tab>

@@ -29,7 +29,7 @@ const routes: Routes = [
         component: AboutComponent,
       },
       {
-        path: ':near/:name',
+        path: ':link',
         component: PlaceComponent,
       },
       {

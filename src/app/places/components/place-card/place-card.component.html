@@ -12,15 +12,15 @@
         <p>
             <strong>Distance: </strong>{{ place | distance | number}} km
         </p>
-        <p *ngIf="POI !== undefined">
-            <strong>Census: </strong> {{ POI.location.census_block }}
+        <p *ngIf="place.location.census_block">
+            <strong>Census: </strong> {{ place.location.census_block }}
         </p>
     </mat-card-content>
     <mat-card-actions>
         <button mat-raised-button 
                 color="accent"
                 class="mb-3"
-                [routerLink]="['/places', near, place.name]">
+                [routerLink]="['/places', place.link]">
             Read...
         </button>
     </mat-card-actions>
