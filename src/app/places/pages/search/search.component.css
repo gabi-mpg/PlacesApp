@@ -1,0 +1,14 @@
+mat-form-field {
+  width: 100%;
+}
+
+button {
+  width: 100%;
+}
+
+::ng-deep .snackError {
+  background: #3f51b5;
+}
+::ng-deep .snackError button {
+  color: white;
+}

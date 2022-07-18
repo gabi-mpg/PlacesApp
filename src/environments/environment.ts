@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  foursquareApiKey: 'fsq3et5FtK77BuzMOuzr7AAyfGXQ7zUvrMfC/WlmfGMSbvI='
+  foursquareApiKey: 'fsq3et5FtK77BuzMOuzr7AAyfGXQ7zUvrMfC/WlmfGMSbvI=',
+  googleMapsApiKey: 'AIzaSyBxl8gPo0L8NVDBiyyOXnNLUzVzWwTyze4'
 };
 
 /*

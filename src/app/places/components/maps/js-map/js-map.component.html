@@ -1,0 +1,14 @@
+<google-map
+  [width]="width"
+  [height]="height"
+  [center]="places[0] | locationPipe"
+  [zoom]="zoom"
+>
+  <map-marker
+    *ngFor="let place of places"
+    [position]="place | locationPipe"
+    [title]="place.name"
+  >
+  </map-marker>
+  >
+</google-map>

@@ -1,22 +1,26 @@
-<mat-card>
+<mat-card class="mt-2">
     <mat-card-header>
         <mat-card-title> {{ place.name }}</mat-card-title>
-        <mat-card-subtitle> {{ place.categories }} </mat-card-subtitle>
+        <mat-card-subtitle>Address: {{ place.location.address }} </mat-card-subtitle>
     </mat-card-header>
-    <!-- <img mat-card-image [src]="place.categories[0].icon.prefix + place.categories[0].icon.suffix" alt="Image of {{place.name}}"> -->
+    <img mat-card-image [src]="place.categories[0] | imageIcon" alt="Image of {{place.name}}">
     <mat-card-content>
-        <h3>{{ place.timezone }}</h3>
-        <p>
-            <strong>x: </strong> {{ place.distance }}
+        <h3>Info:  </h3>
+        <p *ngIf="place.categories.length > 0">
+            <strong>Category: </strong>{{ place.categories[0].name }}
         </p>
         <p>
-            <strong>x: </strong>{{ place.chains }}
+            <strong>Distance: </strong>{{ place | distance | number}} km
+        </p>
+        <p *ngIf="POI !== undefined">
+            <strong>Census: </strong> {{ POI.location.census_block }}
         </p>
     </mat-card-content>
     <mat-card-actions>
         <button mat-raised-button 
                 color="accent"
-                [routerLink]="['/places', place.name]">
+                class="mb-3"
+                [routerLink]="['/places', near, place.name]">
             Read...
         </button>
     </mat-card-actions>

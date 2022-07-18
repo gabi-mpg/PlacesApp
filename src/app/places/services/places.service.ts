@@ -1,46 +1,89 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { Results } from '../interfaces/place-results.insterface';
+import { Results, Place } from '../interfaces/place-results.insterface';
 import { Observable } from 'rxjs';
+import { ResultsPOI, POI } from '../interfaces/places-poi.interface';
+import { Photo } from '../interfaces/photo.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PlacesService {
+  
   headers!: HttpHeaders;
   baseURL: string = 'https://api.foursquare.com/v3/places/search';
+  baseURLPOI: string = 'https://api.foursquare.com';
+  private _placesRecord!: Place[];
 
   constructor(private _http: HttpClient) {
     this.headers = new HttpHeaders().set(
       'Authorization',
       environment.foursquareApiKey
+    );     
+
+    const storage = localStorage.getItem('placesRecord');
+      
+    if(storage){
+      this._placesRecord = JSON.parse( storage );
+    }
+  }
+
+  get getRecord(){
+    console.log(this._placesRecord);
+    
+    return [...this._placesRecord];
+  }
+
+
+  addToRecord(place: Place){
+    if(this._placesRecord !== undefined){
+      if( !this._placesRecord.some(e => e.fsq_id === place.fsq_id)){
+        this._placesRecord.unshift(place);
+        this._placesRecord = this._placesRecord.splice(0,40);
+  
+        localStorage.setItem('placesRecord', JSON.stringify(this._placesRecord));
+
+      }
+    } else {
+      this._placesRecord = [place];
+      localStorage.setItem('placesRecord', JSON.stringify(this._placesRecord));
+    }
+  }
+
+  getImages(url: string){
+    return this._http.get(url).subscribe(
+      (res) => console.log(res) 
     );
   }
 
-  getPlaces(query: string, near: string) {
-    console.log(this.headers.get('Access-Control-Allow-Origin'));
-
-    return this._http
-      .get(this.baseURL + '?query=restaurant&near=chicago', {
-        headers: this.headers,
-      })
-      .subscribe((res) => console.log(res));
+  getPlace(query: string, near: string): Observable<Results> {    
+    return this._http.get<Results>(this.baseURL + `?query=${query}&near=${near}&limit=4`, {
+      headers: this.headers
+    });
   }
 
   foursquareGet(query: string, near: string): Observable<Results> {
-    // return this._http.get<Results>('https://api.foursquare.com/v3/places/search?query=mir&near=tenerife', {
-    //   headers: this.headers
-    // });
-    return this._http.get<Results>(this.baseURL + `?query=${query}&near=${near}`, {
+    return this._http.get<Results>(this.baseURL + `?query=${query}&near=${near}&limit=20`, {
       headers: this.headers
     });
   }
 
   getSuggestions(term: string, near: string): Observable<Results>{
-    return this._http.get<Results>(`${this.baseURL}?query=${term}&near=${near}&limit=6`, {
+    return this._http.get<Results>(`${this.baseURL}?query=${term}&near=${near}&limit=5`, {
       headers: this.headers
     }
     );
+  }
+
+  getPOI(endpoint: string): Observable<POI>{
+    return this._http.get<POI>(`${this.baseURLPOI}${endpoint}`, {
+      headers: this.headers
+    });
+  }
+
+  getPhotos(endpoint: string): Observable<Photo[]>{
+    const url = `${this.baseURLPOI}${endpoint}/photos`;
+    return this._http.get<Photo[]>(url, {headers: this.headers});
   }
 }

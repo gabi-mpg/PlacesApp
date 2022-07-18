@@ -13,8 +13,15 @@ import { MaterialModule } from '../material/material.module';
 import { NavHeaderComponent } from './components/navigation/nav-header/nav-header.component';
 import { SidenavListComponent } from './components/navigation/sidenav-list/sidenav-list.component';
 import { FormsModule } from '@angular/forms';
-
-
+import { JsMapComponent } from './components/maps/js-map/js-map.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { LocationPipe } from './pipes/location.pipe';
+import { DistancePipe } from './pipes/distance.pipe';
+import { RouterModule } from '@angular/router';
+import { ImagePipe } from './pipes/image.pipe';
+import { ImagePOIPipe } from './pipes/image-poi.pipe';
+import { AboutComponent } from './pages/about/about.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,17 +31,25 @@ import { FormsModule } from '@angular/forms';
     PlaceComponent,
     HomeComponent,
     NavHeaderComponent,
-    SidenavListComponent
+    SidenavListComponent,
+    JsMapComponent,
+    LocationPipe,
+    DistancePipe,
+    ImagePipe,
+    ImagePOIPipe,
+    AboutComponent,
   ],
   imports: [
     CommonModule,
     FlexLayoutModule,
     PlacesRoutingModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    GoogleMapsModule,
+    RouterModule,
+    HttpClientModule
   ],
-  exports: [
-    HomeComponent
-  ]
+  exports: [HomeComponent],
+  providers: [ HttpClientModule]
 })
-export class PlacesModule { }
+export class PlacesModule {}

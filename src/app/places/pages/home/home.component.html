@@ -1,69 +1,10 @@
-    <mat-sidenav-container fullscreen>
-        <mat-sidenav #sidenav role="navigation">
-            <app-sidenav-list (sidenavClose)="sidenav.toggle()"></app-sidenav-list>
-        </mat-sidenav>
-        <mat-sidenav-content>
-            <app-nav-header (sidenavToggle)="sidenav.toggle()"></app-nav-header>
-            <main class="container">
-                <router-outlet></router-outlet>
-            </main>
-        </mat-sidenav-content>
-    </mat-sidenav-container>
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav role="navigation">
+    <app-sidenav-list (sidenavClose)="sidenav.toggle()"></app-sidenav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-nav-header (sidenavToggle)="sidenav.toggle()"></app-nav-header>
 
-    <!-- <mat-sidenav-container fullscreen>
-        <mat-sidenav #sidenav role="navigation" mode="push">
-            <mat-toolbar color="accent">
-                <div fxHide.gt.xs>
-                </div> 
-                <span>Menu</span>
-                <span class="spacer"></span>
-                <button mat-icon-button 
-                        (click)="sidenav.toggle()">
-                    <mat-icon>menu</mat-icon>
-                </button>
-                <div fxFlex fxLayout="15px" class="navigation">
-            
-                </div> 
-            </mat-toolbar>
-            <mat-nav-list>
-                <a routerLink="./search" 
-                    mat-list-item
-                    (click)="sidenav.toggle()">
-                    <mat-icon mat-list-icon>search</mat-icon>
-                    <span>Search Places</span>
-                </a>
-                <a routerLink="./list" 
-                    mat-list-item
-                    (click)="sidenav.toggle()">
-                    <mat-icon mat-list-icon>list</mat-icon>
-                    <span>List Recents</span>
-                </a>
-                <a routerLink="./list" 
-                    mat-list-item
-                    (click)="sidenav.toggle()">
-                    <mat-icon mat-list-icon>info</mat-icon>
-                    <span>About Us</span>
-                </a>
-            </mat-nav-list>
-        </mat-sidenav>
-        <mat-sidenav-content>
-            <mat-toolbar color="primary">
-                <div fxHide.gt.xs>
-                    <button mat-icon-button 
-                            (click)="sidenav.toggle()">
-                        <mat-icon>menu</mat-icon>
-                    </button>
-                </div>
-                <div fxFlex fxLayout="15px" class="navigation">
-            
-                </div>
-                <span class="spacer"></span>
-                <mat-icon>code</mat-icon>
-            </mat-toolbar>
-            <div class="container">
-                <router-outlet></router-outlet>
-            </div>
-        </mat-sidenav-content>
-    </mat-sidenav-container> -->
-
-
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

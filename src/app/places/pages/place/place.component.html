@@ -1,1 +1,77 @@
-<p>place works!</p>
+<div class="mb-5 container">
+  <mat-grid-list cols="1" *ngIf="place == undefined; else divPlace">
+    <mat-grid-tile>
+      <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <ng-template #divPlace>
+    <h1>{{ place.name }}</h1>
+    <div
+      class="mt-4"
+      fxLayout="row grap"
+      fxLayout.xs="column"
+      fxLayoutGap="15px"
+    >
+      <div fxLayout="column">
+        <div fxFlex class="">
+          <img
+            [src]="place.categories[0] | imageIcon"
+            alt="Icon photo of "
+            class="icon"
+            *ngIf="photos.length == 0; else photo"
+          />
+        </div>
+        <div fxFlex class="mt-3">
+          <p *ngIf="place.categories.length > 0">
+            <strong>Category: </strong>{{ place.categories[0].name }}
+          </p>
+          <p><strong>Distance: </strong>{{ place | distance | number }} km</p>
+          <p *ngIf="place.location.census_block !== null">
+            <strong>Census block: </strong> {{ place.location.census_block }}
+          </p>
+        </div>
+      </div>
+      <div fxFlex fxFill class="">
+        <h2 class="font-weight-bold">Description:</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi earum
+          nemo iste? Hic quasi corrupti saepe, iste nam eius tempora numquam
+          maiores tempore, nihil temporibus. Esse autem quaerat asperiores
+          facilis. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+          Quaerat dolore excepturi optio iste iure laudantium possimus
+          assumenda, reiciendis eaque dignissimos earum inventore quas hic
+          explicabo esse necessitatibus, eius, impedit a! Lorem ipsum dolor sit
+          amet consectetur adipisicing elit. Aliquam odio est error officia
+          autem, distinctio harum dolor nulla explicabo obcaecati pariatur, ab
+          nobis omnis consequatur voluptatem nisi hic illo debitis.
+        </p>
+        <p>
+          <strong>Address: </strong>
+          {{ place.location.address }}, {{ place.location.postcode }},
+          {{ place.location.locality }}, {{ place.location.region }},
+          {{ place.location.country }},
+        </p>
+        <p><strong>Timezone: </strong>{{ place.timezone }}</p>
+        <div
+          *ngIf="place.categories.length > 0"
+          fxLayout="row"
+          id="icons"
+          align="baseline"
+        >
+          <div *ngFor="let category of place.categories">
+            <img [src]="category | imageIcon" alt="" />
+          </div>
+        </div>
+      </div>
+
+      <ng-template #photo>
+        <img [src]="photos[0] | imagePOI" alt="" />
+      </ng-template>
+    </div>
+  </ng-template>
+
+  <div class="mt-3" id="map" align="middle">
+    <img mat-card-image [src]="mapURL" alt="Image of {{ place.name }}" />
+  </div>
+</div>

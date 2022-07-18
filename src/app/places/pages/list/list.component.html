@@ -1,13 +1,24 @@
-<div fxLayout="row grap"
-    fxLayout.xs="column"
-    fxLayoutAlign="center"
-    fxLayoutGap="10px">
-    <div fxflex="20" 
-        fxflex.lg="15"
-        fxflex.sm="30"
-        *ngFor="let place of places">
-        
-        <app-place-card [place]="place"></app-place-card>
-
+<div class="container mt-4">
+  <h2 *ngIf="near; else recents" class="mt-3">
+    Places near "{{ near | titlecase }}"
+  </h2>
+  <div fxLayout="row grap" fxLayoutAlign="center" fxLayoutGap="70px">
+    <div fxflex="20" fxflex.lg="15" fxflex.sm="30" *ngFor="let place of places">
+      <app-place-card
+        [place]="place"
+        [near]="near"
+        [POIData]="POI"
+      ></app-place-card>
     </div>
+
+    <ng-template #recents>
+      <h1 class="mt-3">Your recent searches</h1>
+      <hr />
+    </ng-template>
+
+    <div *ngIf="places === undefined">
+      <h3>No recent searches</h3>
+      <hr />
+    </div>
+  </div>
 </div>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { MatTabsModule } from '@angular/material/tabs'
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -33,7 +33,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSelectModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatAutocompleteModule
-  ]
+    MatAutocompleteModule,
+  ],
 })
-export class MaterialModule { }
+export class MaterialModule {}

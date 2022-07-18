@@ -1,30 +1,34 @@
 mat-nav-list a {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }
 
 a {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
+  border-bottom: 2px solid transparent;
+  /* width: 7rem;
+    text-align: center; */
 }
 
-a:hover, a:active {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    color: lightgrey;
+a:hover,
+a:active {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border-bottom: 2px solid white;
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }
 
 mat-toolbar {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
-@media(max-width: 959px) {
-    mat-toolbar {
-        border-radius: 0px;
-    }
+@media (max-width: 959px) {
+  mat-toolbar {
+    border-radius: 0px;
+  }
 }

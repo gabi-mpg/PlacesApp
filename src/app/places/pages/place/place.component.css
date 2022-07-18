@@ -1,0 +1,21 @@
+img {
+  width: 100%;
+  background-color: rgb(50, 103, 200);
+}
+
+.icon {
+  width: 200px;
+  height: 200px;
+}
+
+#icons img {
+  width: 4rem;
+  margin-left: 1rem;
+}
+
+#icons {
+  justify-content: flex-end;
+}
+p {
+  text-align: justify;
+}

@@ -5,6 +5,7 @@ import { SearchComponent } from './pages/search/search.component';
 import { ListComponent } from './pages/list/list.component';
 import { PlaceComponent } from './pages/place/place.component';
 import { HomeComponent } from './pages/home/home.component';
+import { AboutComponent } from './pages/about/about.component';
 
 const routes: Routes = [
   {
@@ -13,31 +14,31 @@ const routes: Routes = [
     children: [
       {
         path: 'search',
-        component: SearchComponent
+        component: SearchComponent,
       },
       {
         path: 'list',
-        component: ListComponent
+        component: ListComponent,
       },
       {
-        path: 'id',
-        component: PlaceComponent
+        path: 'about',
+        component: AboutComponent,
+      },
+      {
+        path: ':near/:name',
+        component: PlaceComponent,
       },
       {
         path: '**',
-        redirectTo: 'search'
+        redirectTo: 'search',
       },
-    ]
-  }
-]
+    ],
+  },
+];
 
 @NgModule({
   declarations: [],
-  imports: [
-    RouterModule.forChild( routes )
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class PlacesRoutingModule { }
+export class PlacesRoutingModule {}

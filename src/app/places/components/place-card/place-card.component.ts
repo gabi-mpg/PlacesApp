@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { from, of } from 'rxjs';
 import { Place } from '../../interfaces/place-results.insterface';
+import { POI } from '../../interfaces/places-poi.interface';
+import { PlacesService } from '../../services/places.service';
 
 @Component({
   selector: 'app-place-card',
@@ -8,19 +11,27 @@ import { Place } from '../../interfaces/place-results.insterface';
   styles: [
     `
       mat-card {
-        margin-top: 20px;
-        width: 13rem;
+        width: 30rem;
       }
     `,
   ],
 })
 export class PlaceCardComponent implements OnInit {
-
   @Input() place!: Place;
-  
-  constructor() { }
+  @Input() POIData: POI[] = [];
+  @Input() near: string = '';
+
+  POI: POI | undefined;
+
+  constructor(private _placesService: PlacesService) {}
 
   ngOnInit(): void {
-  }
+    if (!this.near) {
+      this.near = this.place.location.country;
+    }
 
+    this._placesService
+      .getPOI(this.place.link)
+      .subscribe((e) => (this.POI = e));
+  }
 }

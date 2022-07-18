@@ -1,48 +1,95 @@
-<div fxLayout="column">
+<div fxLayout="column" class="container mb-5 mt-4">
+  <div>
+    <h1>Places Search</h1>
+    <mat-divider></mat-divider>
+  </div>
+  <div fxLayout="column" class="mt-3">
     <div>
-        <h1>Places Search</h1>
-        <mat-divider></mat-divider>
+      <mat-form-field appearance="fill">
+        <mat-label
+          >Places near...
+          <small>(E.g. 'Chicago', 'Tenerife', 'Spain') *</small></mat-label
+        >
+        <input
+          matInput
+          type="text"
+          [(ngModel)]="near"
+          name="near"
+          (keyup.enter)="searchAll()"
+          autocomplete="off"
+          #txtNear
+        />
+      </mat-form-field>
+
+      <mat-form-field id="search" appearance="fill">
+        <mat-label>Type your search...</mat-label>
+        <input
+          type="text"
+          aria-label="Enter your search"
+          name="term"
+          matInput
+          [disabled]="near.length < 3"
+          [(ngModel)]="term"
+          [matAutocomplete]="auto"
+          (input)="search()"
+          (keyup.enter)="searchAll()"
+          #txtSearch
+        />
+        <mat-autocomplete
+          autoActiveFirstOption
+          #auto="matAutocomplete"
+          (optionSelected)="selectedOption($event)"
+        >
+          <mat-option *ngFor="let place of places" [value]="place.name">
+            {{ place.name }}
+          </mat-option>
+          <mat-option
+            [value]="term"
+            *ngIf="places.length > 0 && term && term.length >= 3"
+          >
+            Search "{{ term }}"
+          </mat-option>
+          <mat-option
+            [value]="term"
+            *ngIf="places.length === 0 && term && term.length >= 3"
+          >
+            No results for "{{ term }}"
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <button mat-raised-button color="accent" (click)="searchAll()">
+        Search
+      </button>
     </div>
-    <div fxLayout="column">
-        <h3>Search</h3>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Type your search...</mat-label>
-            <input type="text"
-                   aria-label="Enter your search"
-                   matInput
-                   [(ngModel)]="term"
-                   [ngModelOptions]="{standalone: true}"
-                   [matAutocomplete]="auto"
-                   (input)="search()">
-            <mat-autocomplete autoActiveFirstOption 
-                              #auto="matAutocomplete"
-                              (optionSelected)="selectedOption( $event )">
-              <mat-option *ngFor="let place of places" 
-                          [value]="place.name">
-                {{ place.name }}
-              </mat-option>
-              <mat-option [value]="" *ngIf="places.length === 0 && term && term.length >= 3">
-                No results for "{{term}}"
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
-        </div>
+  </div>
 
+  <div class="alert alert-danger mt-3" *ngIf="isError">
+    No results found for "{{ termSend }}" near "{{ nearSend }}"
+  </div>
 
-    <ng-template #noResults>
-        No results for "{{term}}"
-    </ng-template>
-      
-  
-      <div *ngIf="selectedPlace">
-        <mat-tab-group>
-          <mat-tab label="List">
-            <app-list [places]="places"></app-list>
-          </mat-tab>
-          <mat-tab label="Map">
-          
-          </mat-tab>
-        </mat-tab-group>
-      </div>
+  <mat-grid-list
+    cols="1"
+    *ngIf="isSearch && placesPOI.length == 0; else divResults"
+  >
+    <mat-grid-tile>
+      <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+  </mat-grid-list>
 
+  <ng-template #divResults>
+    <div *ngIf="placesPOI.length > 0">
+      <mat-tab-group>
+        <mat-tab label="List">
+          <app-list
+            [places]="places"
+            [POI]="placesPOI"
+            [near]="nearSend"
+          ></app-list>
+        </mat-tab>
+        <mat-tab label="Map">
+          <app-js-map [places]="places"></app-js-map>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </ng-template>
 </div>

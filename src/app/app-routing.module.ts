@@ -5,20 +5,21 @@ import { HomeComponent } from './places/pages/home/home.component';
 const routes: Routes = [
   {
     path: 'places',
-    component: HomeComponent
+    component: HomeComponent,
   },
   {
     path: 'places',
-    loadChildren: () => import('./places/places.module').then ( m => m.PlacesModule)
+    loadChildren: () =>
+      import('./places/places.module').then((m) => m.PlacesModule),
   },
   {
     path: '**',
-    redirectTo: 'places'
-  }
+    redirectTo: 'places',
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot( routes )],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

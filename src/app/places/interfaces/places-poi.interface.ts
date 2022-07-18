@@ -1,5 +1,5 @@
-export interface Results {
-    results: Place[];
+export interface ResultsPOI {
+    results: POI;
     context: Context;
 }
 
@@ -21,21 +21,16 @@ export interface Center {
     longitude: number;
 }
 
-export interface Place {
-    
-}
-
-export interface Place {
+export interface POI {
     fsq_id:         string;
     categories:     Category[];
     chains:         any[];
-    distance:       number;
     geocodes:       Geocodes;
     link:           string;
     location:       Location;
     name:           string;
     related_places: RelatedPlaces;
-    timezone?:      string;
+    timezone:       string;
 }
 
 export interface Category {
@@ -46,11 +41,7 @@ export interface Category {
 
 export interface Icon {
     prefix: string;
-    suffix: Suffix;
-}
-
-export enum Suffix {
-    PNG = ".png",
+    suffix: string;
 }
 
 export interface Geocodes {
@@ -59,26 +50,18 @@ export interface Geocodes {
 }
 
 export interface Location {
-    address?:           string;
-    address_extended?: string;
-    census_block?:      string;
-    admin_region?:      string;
+    address:           string;
+    census_block?:     string;
     country:           string;
-    cross_street?:     string;
-    dma?:               string;
+    cross_street:      string;
+    dma?:              string;
     formatted_address: string;
     locality:          string;
+    neighborhood?:     string[];
     postcode:          string;
     region:            string;
-    neighborhood?:     string[];
+    admin_region?:     string;
 }
-
 
 export interface RelatedPlaces {
-    parent?: Parent;
-}
-
-export interface Parent {
-    fsq_id: string;
-    name:   string;
 }
