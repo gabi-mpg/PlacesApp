@@ -1,10 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Place, Results } from '../../interfaces/place-results.insterface';
+import { Component, OnInit } from '@angular/core';
+import { Place } from '../../interfaces/place-results.insterface';
 import { PlacesService } from '../../services/places.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import { LocationPipe } from '../../pipes/location.pipe';
 import { environment } from '../../../../environments/environment';
-import { POI } from '../../interfaces/places-poi.interface';
 import { Photo } from '../../interfaces/photo.interface';
 
 @Component({
@@ -17,8 +15,8 @@ export class PlaceComponent implements OnInit {
   name: string = '';
   mapURL: string = '';
   baseURL: string = 'https://maps.googleapis.com/maps/api/staticmap?';
-  key: string = 'AIzaSyBxl8gPo0L8NVDBiyyOXnNLUzVzWwTyze4';
-  // key: string = environment.googleMapsApiKey;
+  // key: string = 'AIzaSyBxl8gPo0L8NVDBiyyOXnNLUzVzWwTyze4';
+  key: string = environment.googleMapsApiKey;
   place!: Place;
   photos: Photo[] = [];
 
@@ -41,12 +39,9 @@ export class PlaceComponent implements OnInit {
       next: (res) => {
         if (res.results.length > 0) {
           this.place = res.results[0];
-          console.log(this.place);
-
           this._placeService.getPhotos(this.place.link).subscribe((photos) => {
             if (photos.length > 0) {
               this.photos = photos;
-              console.log(photos);
             }
             this._placeService.addToRecord(this.place);
             this.getMapURL();

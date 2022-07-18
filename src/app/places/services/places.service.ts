@@ -30,8 +30,6 @@ export class PlacesService {
   }
 
   get getRecord(){
-    console.log(this._placesRecord);
-    
     return [...this._placesRecord];
   }
 
@@ -49,12 +47,6 @@ export class PlacesService {
       this._placesRecord = [place];
       localStorage.setItem('placesRecord', JSON.stringify(this._placesRecord));
     }
-  }
-
-  getImages(url: string){
-    return this._http.get(url).subscribe(
-      (res) => console.log(res) 
-    );
   }
 
   getPlace(query: string, near: string): Observable<Results> {    

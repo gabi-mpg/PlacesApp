@@ -8,13 +8,6 @@ import { PlacesService } from '../../services/places.service';
   selector: 'app-place-card',
   templateUrl: './place-card.component.html',
   styleUrls: ['./place-card.component.css'],
-  styles: [
-    `
-      mat-card {
-        width: 30rem;
-      }
-    `,
-  ],
 })
 export class PlaceCardComponent implements OnInit {
   @Input() place!: Place;

@@ -1,14 +1,19 @@
 <google-map
   [width]="width"
   [height]="height"
-  [center]="places[0] | locationPipe"
+  [center]="markers[0].position"
   [zoom]="zoom"
+  #map
 >
-  <map-marker
-    *ngFor="let place of places"
-    [position]="place | locationPipe"
-    [title]="place.name"
-  >
-  </map-marker>
-  >
+    <map-marker
+      #markerElem = "mapMarker"
+    *ngFor="let marker of markers"
+      [position]="marker.position"
+      [title]="marker.title"
+      [options]="marker.options"
+      [clickable]="true"
+      (mapClick)="openInfo(markerElem, marker.title)"
+    >
+    </map-marker>
+  <map-info-window (click)="navigate()">{{ infoContent }}</map-info-window>
 </google-map>
