@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { from, of } from 'rxjs';
 import { Place } from '../../interfaces/place-results.insterface';
 import { POI } from '../../interfaces/places-poi.interface';
 import { PlacesService } from '../../services/places.service';

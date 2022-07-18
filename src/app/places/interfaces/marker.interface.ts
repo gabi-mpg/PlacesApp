@@ -1,5 +1,3 @@
-import { MatOptionSelectionChange } from "@angular/material/core";
-
 export interface Marker {
     position: Position;
     label?: Label;

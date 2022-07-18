@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Results, Place } from '../interfaces/place-results.insterface';
 import { Observable } from 'rxjs';
-import { ResultsPOI, POI } from '../interfaces/places-poi.interface';
+import { POI } from '../interfaces/places-poi.interface';
 import { Photo } from '../interfaces/photo.interface';
 
 @Injectable({

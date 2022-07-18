@@ -1,10 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { PlacesService } from '../../services/places.service';
 import { Place } from '../../interfaces/place-results.insterface';
-import {
-  MatAutocompleteActivatedEvent,
-  MatAutocompleteModule,
-} from '@angular/material/autocomplete';
+import { MatAutocompleteActivatedEvent } from '@angular/material/autocomplete';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { POI } from '../../interfaces/places-poi.interface';
 
@@ -42,7 +39,6 @@ export class SearchComponent implements OnInit {
           this.isError = false;
         },
         error: (err) => {
-          // this.isError = true;
           console.log(err);
         },
       });
