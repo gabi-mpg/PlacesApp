@@ -28,7 +28,7 @@
               <strong>Category: </strong>{{ place.categories[0].name }}
             </p>
             <p><strong>Distance: </strong>{{ place | distance }} km</p>
-            <p *ngIf="place.location.census_block !== null">
+            <p *ngIf="place.location.census_block">
               <strong>Census block: </strong> {{ place.location.census_block }}
             </p>
           </div>

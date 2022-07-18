@@ -53,6 +53,8 @@ Navigate to `http://localhost:4200/` in case you used the first command, the sec
 
 Navigate to the next link in order to use the application already deployed:
 
+<https://places-app-gabi-mpg.netlify.app>
+
 ## Authors and acknowledgment
 
 - Author: Gabriela Mercado Pérez
