@@ -13,9 +13,7 @@ export class ListComponent implements OnInit {
 
   constructor(private _placesService: PlacesService) {}
 
-  ngOnInit(): void {
-    console.log(this.places);
-    
+  ngOnInit(): void {    
     if (this.places == undefined) {
       this.places = this._placesService.getRecord;
     }

@@ -29,7 +29,7 @@ const routes: Routes = [
         component: AboutComponent,
       },
       {
-        path: ':link',
+        path: ':link/:dist',
         component: PlaceComponent,
       },
       {

@@ -12,6 +12,7 @@ import { Photo } from '../../interfaces/photo.interface';
 })
 export class PlaceComponent implements OnInit {
   link: string = '';
+  distance: string = '';
   mapURL: string = '';
   baseURL: string = 'https://maps.googleapis.com/maps/api/staticmap?';
   key: string = environment.googleMapsApiKey;
@@ -26,6 +27,8 @@ export class PlaceComponent implements OnInit {
   ngOnInit(): void {
     this._activeRoute.params.subscribe((params: Params) => {
       this.link = params['link'];
+      this.distance = params['dist'];
+      
     });
     
     this.getPlan();
@@ -34,14 +37,14 @@ export class PlaceComponent implements OnInit {
   getPlan() {
     this._placeService.getPlaceLink(this.link).subscribe({
       next: (res) => {
-        console.log(res);
         
         if (res) {
           this.place = res;
+          this.place.distance = Number(this.distance);            
           this._placeService.getPhotos(this.place.link).subscribe((photos) => {
             if (photos.length > 0) {
               this.photos = photos;
-            }
+            }        
             this._placeService.addToRecord(this.place);
             this.getMapURL();
           });
@@ -51,8 +54,6 @@ export class PlaceComponent implements OnInit {
         console.log(err);
       },
     });
-
-    console.log(this.place);
     
   }
 

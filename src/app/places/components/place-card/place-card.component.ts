@@ -17,5 +17,6 @@ export class PlaceCardComponent implements OnInit {
     if (!this.near) {
       this.near = this.place.location.country;
     }
+    
   }
 }
