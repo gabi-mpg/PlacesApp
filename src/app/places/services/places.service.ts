@@ -30,7 +30,7 @@ export class PlacesService {
   }
 
   get getRecord(){
-    return [...this._placesRecord];
+    return this._placesRecord;
   }
 
 
