@@ -24,7 +24,7 @@ export class PlaceCardComponent implements OnInit {
    * string, the country of the place is used. 
    */
   ngOnInit(): void {
-    if (this.near.length == 0) {
+    if (!this.near) {
       this.near = this.place.location.country;
     }
     
