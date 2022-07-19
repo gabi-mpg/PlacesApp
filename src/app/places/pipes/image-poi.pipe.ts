@@ -6,7 +6,7 @@ import { Photo } from '../interfaces/photo.interface';
 })
 
 /**
- * This Pipes recives an object Photo and builds an images src valid URL
+ * This Pipes recives an object Photo and builds a valid img src URL
  * in order to correctly retrieve the information
  */
 export class ImagePOIPipe implements PipeTransform {

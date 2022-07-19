@@ -4,6 +4,10 @@ import { Place } from '../interfaces/place-results.insterface';
 @Pipe({
   name: 'locationPipe'
 })
+/**
+ * Pipe that receives a place and it builds a google map LatLng object using
+ * the place's geocodes information
+ */
 export class LocationPipe implements PipeTransform {
 
   transform(place: Place): google.maps.LatLng {
