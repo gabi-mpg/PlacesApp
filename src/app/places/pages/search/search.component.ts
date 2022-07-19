@@ -9,9 +9,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
 })
-export class SearchComponent implements OnInit {
-  @ViewChild('txtSearch') txtSearch!: ElementRef;
-  @ViewChild('txtNear') txtNear!: ElementRef;
+
+/**
+ * Class where all the search logic is contained
+ */
+export class SearchComponent{
+
   term: string = '';
   near: string = '';
   places: Place[] = [];
@@ -25,8 +28,10 @@ export class SearchComponent implements OnInit {
     private _snackBar: MatSnackBar
   ) {}
 
-  ngOnInit(): void {}
-
+  /**
+   * This method is triggered when the user types on the search input, getting
+   * the suggested places based in the location and the term typed
+   */
   search() {
     this.places = [];
     this._placesService
@@ -42,6 +47,12 @@ export class SearchComponent implements OnInit {
       });
   }
 
+  /**
+   * This method equals the value of the option selected to the term variable of the
+   * class
+   * @param event It receives the event occurred when a user selects an option
+   * from the material autocomplete element, containing the info about it.
+   */
   selectedOption(event: MatAutocompleteActivatedEvent) {
     if (event.option?.value) {
       this.term = event.option?.value;
@@ -49,8 +60,8 @@ export class SearchComponent implements OnInit {
   }
 
   /**
-   * This method checks the data from the inputs
-   * @returns 
+   * This method checks the data from the inputs and it calls the method that
+   * retrieves the place info only when all the data is correct.
    */
   searchAll() {
     if (!this.near) {
@@ -95,6 +106,10 @@ export class SearchComponent implements OnInit {
       });
   }
 
+  /**
+   * Method to build a snackbar
+   * @param message String containing the message that must be displayed in the snackbar
+   */
   showMessage(message: string) {
     this._snackBar.open(message, 'Ok!', {
       duration: 4000,
