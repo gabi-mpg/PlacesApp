@@ -27,14 +27,14 @@ This project uses enviroment variables, in order to succefully run the project, 
 - Foursquare Api key
 - Google Maps Api key
 
-These two variables are used to run the project and satisfactory retrieve the information from the needed APIs. In case you don't have any personal credentials, it is posible to use a default configuration which will allow you to read from the database and use the project.
+These two variables are used to run the project and satisfactory retrieve the information from the needed APIs.
 
-Please, paste the next conde onto the .env file in order to use the project with already given credentials.
+Please, paste the next conde onto the .env file in order to use the project and fill with your own credentials.
 
 ```bash
 {
-    foursquareApiKey: 'fsq3et5FtK77BuzMOuzr7AAyfGXQ7zUvrMfC/WlmfGMSbvI=',
-    googleMapsApiKey: 'AIzaSyBxl8gPo0L8NVDBiyyOXnNLUzVzWwTyze4'
+    foursquareApiKey: '<YOUR FOURSQUARE API KEY HERE>',
+    googleMapsApiKey: '<YOUR GOOGLE MAPS API KEY HERE>'
 }
 ```
 
